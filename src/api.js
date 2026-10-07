@@ -2,8 +2,24 @@ import axios from 'axios';
 
 export const TOKEN_KEY = 'bustrack_token';
 
+const DEFAULT_API_BASE_URL = 'https://bustracking-backend.onrender.com';
+
+function apiBaseUrl() {
+  const configuredUrl = import.meta.env.VITE_API_URL?.trim();
+  if (!configuredUrl) return `${DEFAULT_API_BASE_URL}/api`;
+
+  try {
+    const url = new URL(configuredUrl);
+    if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Unsupported protocol');
+    return `${url.toString().replace(/\/$/, '').replace(/\/api$/, '')}/api`;
+  } catch {
+    console.warn('Invalid VITE_API_URL. Falling back to the production backend URL.');
+    return `${DEFAULT_API_BASE_URL}/api`;
+  }
+}
+
 const api = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api`,
+  baseURL: apiBaseUrl(),
 });
 
 api.interceptors.request.use((config) => {
