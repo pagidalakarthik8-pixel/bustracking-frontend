@@ -64,6 +64,38 @@ a:hover { text-decoration: underline; }
 .page-head p { margin: 4px 0 0; }
 .page-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
+/* ---------- dashboard colour treatment ---------- */
+.dashboard-page {
+  position: relative;
+  isolation: isolate;
+  padding: 28px;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 5% 5%, rgba(81, 210, 182, 0.45), transparent 26%),
+    radial-gradient(circle at 95% 8%, rgba(255, 183, 77, 0.42), transparent 28%),
+    linear-gradient(135deg, #edf3ff 0%, #f7efff 48%, #edfff8 100%);
+}
+.dashboard-page::before,
+.dashboard-page::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 999px;
+  filter: blur(2px);
+}
+.dashboard-page::before { width: 220px; height: 220px; right: -84px; bottom: -96px; background: rgba(71, 111, 231, 0.18); }
+.dashboard-page::after { width: 150px; height: 150px; left: 36%; top: 38%; background: rgba(242, 99, 155, 0.12); }
+.dashboard-page .page-head { padding: 0 4px; }
+.dashboard-page .card { background: rgba(255, 255, 255, 0.92); border-color: rgba(255, 255, 255, 0.8); box-shadow: 0 12px 28px rgba(48, 63, 126, 0.11); }
+.dashboard-page .stat-row-lg .stat { border: 0; color: #1d2a55; transition: transform .18s ease, box-shadow .18s ease; }
+.dashboard-page .stat-row-lg .stat:hover { transform: translateY(-3px); box-shadow: 0 12px 22px rgba(41, 60, 130, .16); }
+.dashboard-page .stat-row-lg .stat:nth-child(1) { background: linear-gradient(135deg, #d9edff, #eef7ff); }
+.dashboard-page .stat-row-lg .stat:nth-child(2) { background: linear-gradient(135deg, #e4defd, #f3efff); }
+.dashboard-page .stat-row-lg .stat:nth-child(3) { background: linear-gradient(135deg, #d9f7e9, #edfff5); }
+.dashboard-page .stat-row-lg .stat:nth-child(4) { background: linear-gradient(135deg, #fff0cc, #fff9e8); }
+.dashboard-page .stat-row-lg .stat:nth-child(5) { background: linear-gradient(135deg, #ffe1ea, #fff0f5); }
+
 /* ---------- cards & grids ---------- */
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 18px; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }

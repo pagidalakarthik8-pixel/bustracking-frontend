@@ -31,7 +31,7 @@ export default function Register() {
     <div className="auth-page">
       <form className="auth-card" onSubmit={submit}>
         <div className="brand brand-lg">
-          <span className="brand-mark">🚌</span> Anurag University Bus Tracking
+          <span className="brand-mark">🚌</span> BusTrack
         </div>
         <p className="muted">Create a student account. You can pick your bus later from your profile.</p>
         <ErrorBox message={error} />

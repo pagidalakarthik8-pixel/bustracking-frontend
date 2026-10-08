@@ -15,7 +15,6 @@ function updatedAt(value) {
 export default function LiveTracking() {
   const [buses, setBuses] = useState(null);
   const [error, setError] = useState('');
-
   const load = useCallback(async () => {
     try {
       const { data } = await api.get('/buses');
@@ -33,7 +32,6 @@ export default function LiveTracking() {
   }, [load]);
 
   if (!buses) return error ? <ErrorBox message={error} /> : <Loading />;
-
   return (
     <>
       <PageHeader title="Live bus tracking" subtitle="Latest GPS positions for every college bus. Refreshes every 30 seconds.">
@@ -44,19 +42,15 @@ export default function LiveTracking() {
         <div className="cards">
           {buses.map((bus) => {
             const hasLocation = Number.isFinite(bus.latitude) && Number.isFinite(bus.longitude);
-            return (
-              <article className="card tracking-card" key={bus.id}>
-                <div className="bus-hero"><div className="bus-number">{bus.busNumber}</div><StatusBadge status={bus.status} /></div>
-                <p className="muted">{bus.route?.name || 'Route not assigned'}</p>
-                {hasLocation ? (
-                  <>
-                    <div className="gps-coordinates">GPS active</div>
-                    <p className="tracking-time">{updatedAt(bus.locationUpdatedAt)}</p>
-                    <a className="btn btn-primary map-link" href={mapUrl(bus.latitude, bus.longitude)} target="_blank" rel="noreferrer">Open live location</a>
-                  </>
-                ) : <div className="location-pending">GPS location is not available for this bus yet.</div>}
-              </article>
-            );
+            return <article className="card tracking-card" key={bus.id}>
+              <div className="bus-hero"><div className="bus-number">{bus.busNumber}</div><StatusBadge status={bus.status} /></div>
+              <p className="muted">{bus.route?.name || 'Route not assigned'}</p>
+              {hasLocation ? <>
+                <div className="gps-coordinates">GPS active</div>
+                <p className="tracking-time">{updatedAt(bus.locationUpdatedAt)}</p>
+                <a className="btn btn-primary map-link" href={mapUrl(bus.latitude, bus.longitude)} target="_blank" rel="noreferrer">Open live location</a>
+              </> : <div className="location-pending">GPS location is not available for this bus yet.</div>}
+            </article>;
           })}
         </div>
       )}

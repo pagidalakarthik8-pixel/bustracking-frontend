@@ -29,7 +29,7 @@ export default function Layout({ children }) {
     <div className="shell">
       <aside className="sidebar">
         <div className="brand">
-          <span className="brand-mark">🚌</span> Anurag University Bus Tracking
+          <span className="brand-mark">🚌</span> BusTrack
         </div>
         <nav>
           {links.map(([to, label]) => (

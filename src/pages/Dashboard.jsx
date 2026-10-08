@@ -42,7 +42,7 @@ function StudentDashboard({ data, user }) {
   const bus = data.bus;
   const todays = (data.schedules || []).filter((s) => s.days.split(',').includes(data.today));
   return (
-    <>
+    <div className="dashboard-page">
       <PageHeader title={`Hello, ${user.name.split(' ')[0]} 👋`} subtitle="Here is your transport summary for today." />
       <div className="grid-main">
         <section className="card">
@@ -107,14 +107,14 @@ function StudentDashboard({ data, user }) {
           <Link to="/buses" className="link-more">Browse buses →</Link>
         </section>
       </div>
-    </>
+    </div>
   );
 }
 
 function AdminDashboard({ data }) {
   const t = data.totals || {};
   return (
-    <>
+    <div className="dashboard-page">
       <PageHeader title="Admin dashboard" subtitle="Overview of the college transportation service." />
       <div className="stat-row stat-row-lg">
         {[['Buses', t.buses, '/buses'], ['Drivers', t.drivers, '/drivers'], ['Routes', t.routes, '/routes'],
@@ -152,7 +152,7 @@ function AdminDashboard({ data }) {
           <Link to="/notifications" className="link-more">Send a notification →</Link>
         </section>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -29,7 +29,7 @@ export default function Login() {
     <div className="auth-page">
       <form className="auth-card" onSubmit={submit}>
         <div className="brand brand-lg">
-          <span className="brand-mark">🚌</span> Anurag University Bus Tracking
+          <span className="brand-mark">🚌</span> BusTrack
         </div>
         <p className="muted">Sign in to see your bus, route and today's schedule.</p>
         <ErrorBox message={error} />
