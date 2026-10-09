@@ -64,37 +64,585 @@ a:hover { text-decoration: underline; }
 .page-head p { margin: 4px 0 0; }
 .page-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
-/* ---------- dashboard colour treatment ---------- */
+/* ---------- colourful dashboard styling ---------- */
 .dashboard-page {
   position: relative;
   isolation: isolate;
-  padding: 28px;
+  padding: 24px;
   border-radius: 24px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 5% 5%, rgba(81, 210, 182, 0.45), transparent 26%),
-    radial-gradient(circle at 95% 8%, rgba(255, 183, 77, 0.42), transparent 28%),
-    linear-gradient(135deg, #edf3ff 0%, #f7efff 48%, #edfff8 100%);
+  background: radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.18), transparent 32%),
+              radial-gradient(circle at 90% 12%, rgba(244, 63, 94, 0.16), transparent 30%),
+              radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.14), transparent 35%),
+              linear-gradient(135deg, #f0f4ff 0%, #fcf7ff 50%, #effff7 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
-.dashboard-page::before,
-.dashboard-page::after {
+.dashboard-page::before, .dashboard-page::after {
   content: '';
   position: absolute;
   z-index: -1;
   border-radius: 999px;
-  filter: blur(2px);
+  filter: blur(40px);
 }
-.dashboard-page::before { width: 220px; height: 220px; right: -84px; bottom: -96px; background: rgba(71, 111, 231, 0.18); }
-.dashboard-page::after { width: 150px; height: 150px; left: 36%; top: 38%; background: rgba(242, 99, 155, 0.12); }
-.dashboard-page .page-head { padding: 0 4px; }
-.dashboard-page .card { background: rgba(255, 255, 255, 0.92); border-color: rgba(255, 255, 255, 0.8); box-shadow: 0 12px 28px rgba(48, 63, 126, 0.11); }
-.dashboard-page .stat-row-lg .stat { border: 0; color: #1d2a55; transition: transform .18s ease, box-shadow .18s ease; }
-.dashboard-page .stat-row-lg .stat:hover { transform: translateY(-3px); box-shadow: 0 12px 22px rgba(41, 60, 130, .16); }
-.dashboard-page .stat-row-lg .stat:nth-child(1) { background: linear-gradient(135deg, #d9edff, #eef7ff); }
-.dashboard-page .stat-row-lg .stat:nth-child(2) { background: linear-gradient(135deg, #e4defd, #f3efff); }
-.dashboard-page .stat-row-lg .stat:nth-child(3) { background: linear-gradient(135deg, #d9f7e9, #edfff5); }
-.dashboard-page .stat-row-lg .stat:nth-child(4) { background: linear-gradient(135deg, #fff0cc, #fff9e8); }
-.dashboard-page .stat-row-lg .stat:nth-child(5) { background: linear-gradient(135deg, #ffe1ea, #fff0f5); }
+.dashboard-page::before {
+  width: 280px;
+  height: 280px;
+  right: -60px;
+  bottom: -80px;
+  background: rgba(59, 130, 246, 0.18);
+}
+.dashboard-page::after {
+  width: 220px;
+  height: 220px;
+  left: 20%;
+  top: 30%;
+  background: rgba(236, 72, 153, 0.12);
+}
+
+/* University Campus Header Banner */
+.au-banner {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e3a8a 100%);
+  color: #fff;
+  border-radius: 18px;
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 16px 36px rgba(30, 27, 75, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+.au-banner::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(238, 242, 255, 0.15) 0%, transparent 70%);
+}
+.au-banner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 1;
+}
+.au-badge-strip {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.au-tag {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  color: #e0e7ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+  animation: pulse-ring 1.8s infinite;
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.8); }
+  70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+.au-banner h1 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 2px 0;
+}
+.au-banner p {
+  color: #c7d2fe;
+  font-size: 0.88rem;
+  margin: 0;
+}
+.au-banner-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+.btn-glass {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(8px);
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.26);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.btn-glow {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+.btn-glow:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.55);
+}
+
+/* Colourful Stat Grid */
+.colour-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+.c-stat-card {
+  border-radius: 16px;
+  padding: 18px 20px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 110px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+.c-stat-card:hover {
+  transform: translateY(-4px);
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.22);
+}
+.c-stat-card::after {
+  content: '';
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+.c-stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+.c-stat-icon {
+  font-size: 1.35rem;
+}
+.c-stat-num {
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 6px 0 2px;
+}
+.c-stat-sub {
+  font-size: 0.74rem;
+  opacity: 0.85;
+}
+
+/* Gradient Variants */
+.stat-emerald { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
+.stat-teal    { background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%); }
+.stat-amber   { background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); }
+.stat-indigo  { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+.stat-cyan    { background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%); }
+.stat-rose    { background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%); }
+
+/* Fleet Health & Progress Bar */
+.fleet-health-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  padding: 20px 24px;
+  box-shadow: 0 10px 25px rgba(30, 41, 59, 0.08);
+  backdrop-filter: blur(10px);
+}
+.health-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.health-header h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.health-badge {
+  background: #dcfce7;
+  color: #15803d;
+  font-weight: 700;
+  font-size: 0.76rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #bbf7d0;
+}
+.progress-stacked {
+  height: 14px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+.seg-ontime {
+  background: linear-gradient(90deg, #10b981, #34d399);
+  transition: width 0.4s ease;
+}
+.seg-delayed {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  transition: width 0.4s ease;
+}
+.seg-stopped {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+  transition: width 0.4s ease;
+}
+.health-pills {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: #475569;
+}
+.health-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pill-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-ontime { background: #10b981; }
+.dot-delayed { background: #f59e0b; }
+.dot-stopped { background: #ef4444; }
+
+/* Filter & Search Bar */
+.fleet-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-tab {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.filter-tab:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+.filter-tab.active {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-color: #1d4ed8;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+.fleet-search {
+  min-width: 260px;
+  flex: 1;
+  max-width: 360px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  padding: 8px 16px;
+  background: #ffffff;
+  font-size: 0.88rem;
+}
+
+/* Colourful Bus Cards Grid */
+.bus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px;
+}
+.bus-item-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.bus-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(30, 41, 59, 0.12);
+  border-color: #93c5fd;
+}
+.bus-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.bus-number-chip {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 8px;
+  letter-spacing: 0.04em;
+}
+.bus-route-title {
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: #1e293b;
+  margin: 0 0 4px;
+  line-height: 1.35;
+}
+.bus-dest-flow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+.dest-point {
+  color: #059669;
+  font-weight: 600;
+}
+.bus-meta-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 10px;
+}
+.bus-meta-list div {
+  display: flex;
+  flex-direction: column;
+}
+.bus-meta-list span {
+  color: #64748b;
+  font-size: 0.7rem;
+}
+.bus-meta-list strong {
+  color: #334155;
+  font-weight: 600;
+}
+.bus-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 10px;
+  margin-top: 6px;
+}
+.btn-gps-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0284c7;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.btn-gps-link:hover {
+  text-decoration: underline;
+  color: #0369a1;
+}
+
+/* Transit Corridors of Anurag University */
+.corridors-section {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+  padding: 22px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 25px rgba(30, 41, 59, 0.08);
+}
+.corridors-header {
+  margin-bottom: 14px;
+}
+.corridors-header h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px;
+}
+.corridors-header p {
+  color: #64748b;
+  font-size: 0.84rem;
+  margin: 0;
+}
+.corridors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+.corridor-box {
+  padding: 16px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  position: relative;
+  border-left: 5px solid #3b82f6;
+}
+.corridor-box.east { border-left-color: #06b6d4; }
+.corridor-box.north { border-left-color: #8b5cf6; }
+.corridor-box.south { border-left-color: #f59e0b; }
+.corridor-box.west { border-left-color: #10b981; }
+.corridor-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #1e293b;
+  margin: 0 0 4px;
+}
+.corridor-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin: 0 0 8px;
+}
+.corridor-places {
+  font-size: 0.74rem;
+  color: #334155;
+  line-height: 1.4;
+  background: #f8fafc;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+/* Student University Bus Pass Card */
+.student-pass-card {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 16px 36px rgba(49, 46, 129, 0.35);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.student-pass-card::after {
+  content: 'AU';
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  font-size: 11rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+.pass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.pass-inst-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #a5b4fc;
+  text-transform: uppercase;
+}
+.pass-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.pass-bus-big {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.pass-route-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #e0e7ff;
+  margin: 6px 0 12px;
+}
+.pass-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px 18px;
+  margin-top: 14px;
+}
+.pass-field {
+  display: flex;
+  flex-direction: column;
+}
+.pass-field span {
+  font-size: 0.72rem;
+  color: #c7d2fe;
+}
+.pass-field strong {
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
 
 /* ---------- cards & grids ---------- */
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 18px; }
@@ -217,4 +765,5 @@ input:disabled { background: #f0f2f8; color: var(--muted); }
   .content { padding: 18px 14px 40px; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .search { width: 100%; }
+  .fleet-intelligence { grid-template-columns: 1fr; gap: 14px; }
 }
